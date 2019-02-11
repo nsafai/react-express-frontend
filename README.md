@@ -48,41 +48,83 @@ Your goal is to get this project connected to you express server and solve the c
 
 **Challenge 1:** 
 
-Your first goal is ot get the demo project working with your express server and it's API. You've made changes to the API yoju may have to change this project to work with your server. 
+Your first goal is ot get the demo project working with your express server and it's API. You've made changes to the API you may have to change this project to work with your server. 
 
-- Modify the API to work with the changes you made to your server
-  - Get a random number from your service
-  - Add an input that sets the number of dice and number of sides and displays the returned values in a list with the total at the bottom 
+You'll need to run both the server and the React Front end at the same time. Open each in a separate terminal. 
+
+Launch the server: 
+
+`nodemon server.js`
+
+Launch the React front end:
+
+`npm start`
+
+This project uses fetch to call the route: `/random` and prints the returned JSON. You've modifed your server so you may need to modify this route. 
+
+Look at 'App.js'. Here `getRandom()` does the work of making a request to the server. You need to examine this and make sure it's doing the following: 
+
+- Calling the correct route
+  - Keep your eye on the terminal for errors the catch block will print any error messages 
+- Make sure you are passing the correct parameters. 
+  - GET - query vars can be added to the URL
+    - fetch('/random?q=99')
+  - Params are part of the URL 
+    - fetch('/random/dice/3/sides/6') 
+  - Vars can also be passed via headers. For examples of this follow the docs here: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+
+**Goal**: The goal of this challenge is to connect to the server and display values returned via JSON. Variables and parameters passed to the server can be hard coded in this step.  
   
 **Challenge 2:**
 
+Now that your page is displaying data from the serve it's time make parameters and variables passed to the server dynamic. 
 
+Identify the values that need to be sent to the server. 
 
-**Challenge x:**
+Create a form that allows these values to be input from your React front end. To do this you will need to create form elements using the [Controlled Component Pattern](https://reactjs.org/docs/forms.html).
 
-Use your express server as an intermediary to another server. Many API servers work fine but there are times when they do not everything we'd like them to do. 
+The values from the form input elements should now be held on state within your component. The goal now is to incorporate these into your request with `fetch()`. How you do this depends on how your route handles data from a request, hopefully you identified this in Challenge 1. 
 
-There are times when passing data from one server through your server to transform the data to better fit your uses. 
+**Goal**: Use React to connect to the server, pass data to the server and receive a JSON response. 
 
-- Make a service to get the weather
-  - Use [node-fetch](https://www.npmjs.com/package/node-fetch) to get the weather in Express
-    - node-fetch 
-  - Create an endpoint in your express project that returns the weather data from OpenWeatherMap. Use node-fetch to get the weather. Modify the JSON returned from OpenWeatherMap to a more concise and usable format. Return this modified data from your endpoint.
+**Challenge 3:**
+
+Use your express server as an intermediary to another server. Many API servers work fine but there are times when they do not do everything we'd like them to do. 
+
+Requesting data from one server and passing it through your server to transform the data to better fit your uses.
+
+Create an endpoint on your server that will request data from a public API and return it as JSON. You can use the Open Weather Map API to keep things simple. 
+
+**Your Express server will make the request to the API and respond with JSON.** 
+
+**Why**? Using an intermediary or proxy server input a service and your endpoint allows you to modify and polish the data that is passed on. You can use this technique to aggrate data from several different services. 
+
+In the case of Open Weather Map the JSON this service returns is a bit confusing. Using your Express server as a proxy you can transform the data into something easier for your front end to parse. 
+
+Another use of an intermeidate server is to solve problems with CORS. 
+
+**What to do**: 
+
+Create an endpoint in your express project that returns the weather data from OpenWeatherMap. Use node-fetch to get the weather. Modify the JSON returned from OpenWeatherMap to a more concise and usable format. Return this modified data from your endpoint.
 
 Your data should be formatted like this: 
 
+```JSON
 {
   temp: 70,
   short: "Short description",
   long: "A long and more detailed description of the weather",
   humidity: 10,
-
 }
+```
 
-**Challenge x:**
+
+**Challenge 4:**
 
 You've heard [Darksky.net](https://darksky.net/dev) is a pretty good API. Modify your backend to use this service in place of OpenWeatherMap. 
 
 Don't change the format of the JSON that you returned in the previous challenge. 
 
 - Use the concept above to get the weather from the darkskys API. 
+
+**What happened here**? If you finished this challenge you will have replaced data source but not have disrupted your frontend. Your proxy took care of any issues you might have had changing services. 
