@@ -109,7 +109,7 @@ Create an endpoint in your express project that returns the weather data from Op
 
 Your data should be formatted like this: 
 
-```JSON
+```JavaScript
 {
   temp: 70,
   short: "Short description",
@@ -118,13 +118,13 @@ Your data should be formatted like this:
 }
 ```
 
-
 **Challenge 4:**
 
-You've heard [Darksky.net](https://darksky.net/dev) is a pretty good API. Modify your backend to use this service in place of OpenWeatherMap. 
+You've heard [Darksky.net](https://darksky.net/dev) is a pretty good API. Better than Open Weather Map! Modify your backend to use this service in place of OpenWeatherMap. 
 
 Don't change the format of the JSON that you returned in the previous challenge. 
 
 - Use the concept above to get the weather from the darkskys API. 
 
 **What happened here**? If you finished this challenge you will have replaced data source but not have disrupted your frontend. Your proxy took care of any issues you might have had changing services. 
+
