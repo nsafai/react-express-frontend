@@ -68,7 +68,7 @@ class App extends Component {
     return (
       <div className="App">
         <p>
-          <strong>About:</strong>
+          <strong>About: </strong>
           {about}
         </p>
         <div>{this.renderMessage()}</div>
