@@ -1,12 +1,12 @@
 # React Express Front End Starter 
 
-This project is a front end project meant to work with the Express backend [here](https://github.com/Product-College-Labs/react-express-server). 
+This project is a front end project meant to work with the Express backend [here](https://github.com/nsafai/react-express-server). 
 
 The goal of this project is to provide a front end for a simple Express server. 
 
 ## Getting started 
 
-This project is made up two parts. The React front end client and the Express backend server. 
+This project is made up two parts. The React front end client and the [Express backend server](https://github.com/nsafai/react-express-server). 
 
 Install and run this project: 
 
@@ -40,7 +40,7 @@ You'll need to have both projects running at the same time! Launch the Express s
 
 Your goal is to connect this project to the server project and challenges from the previous class. 
 
-Study the example code. It makes a couple calls to the [react-express-server](https://github.com/Product-College-Labs/react-express-project). 
+Study the backend code. It makes a couple calls to the [react-express-server](https://github.com/nsafai/react-express-server). 
 
 You should launch your express server from the previous class. It should be running on localhost:4000. This project should proxy to localhost:4000. The calls this project makes to your express may or may not work at this point, recall you changed the API. 
 
@@ -48,7 +48,7 @@ Your goal is to get this project connected to you express server and solve the c
 
 **Challenge 1:** 
 
-Your first goal is ot get the demo project working with your express server and it's API. You've made changes to the API you may have to change this project to work with your server. 
+Your first goal is to get the demo project working with your express server and it's API. You've made changes to the API you may have to change this project to work with your server. 
 
 You'll need to run both the server and the React Front end at the same time. Open each in a separate terminal. 
 

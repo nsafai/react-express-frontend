@@ -13,16 +13,16 @@ class App extends Component {
     this.state = {
       about: null,
       message: null,
+      max: 99,
     }
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
     // Use Fetch to call API. The /test route returns a simple string
     // This call in componentDidMount will only be called once
-    fetch('/about').then((res) => {
-      // stream the response as JSON
-      return res.json()
-    }).then((json) => {
+    fetch('/about').then(res => res.json()).then((json) => {
       console.log(json)
       const { about } = json // Get a value from JSON object
       this.setState({ about }) // Set a value on state with returned value
@@ -32,22 +32,26 @@ class App extends Component {
     })
 
     // Let's call another API
-    this.fetchMessage()
+    this.getNumber(this.state.max)
   }
 
-  fetchMessage() {
+  getNumber(max) {
     // Wrapping the API call in a function allow you to make calls to this
     // API as often as needed.
-    
-    // This calls a route and passes value in the query string. 
-    fetch('/random/?n=99').then(res => res.json()).then((json) => {
-      console.log(">", json)
+
+    // This calls a route and passes value in the query string.
+    fetch(`/random/?n=${max}`).then(res => res.json()).then((json) => {
+      console.log('>', json)
       this.setState({
         message: json.value,
       })
     }).catch((err) => {
       console.log(err.message)
     })
+  }
+
+  handleChange(event) {
+    this.setState({max: event.target.value});
   }
 
   renderMessage() {
@@ -72,16 +76,20 @@ class App extends Component {
           {about}
         </p>
         <div>{this.renderMessage()}</div>
-        <p>
+        <div>
+          <label>
+            Max:
+            <input type="text" value={this.state.max} onChange={this.handleChange} />
+          </label>
           <button
             type="button"
             onClick={() => {
-              this.fetchMessage()
+              this.getNumber(this.state.max)
             }}
           >
           Random
           </button>
-        </p>
+        </div>
       </div>
     );
   }
